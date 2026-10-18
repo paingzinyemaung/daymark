@@ -109,7 +109,7 @@ export function Dialog({ open, title, description, onClose, children }: DialogPr
               </p>
             ) : null}
           </div>
-          <Button variant="ghost" size="sm" onClick={onClose} aria-label="Close" className="shrink-0 px-2">
+          <Button type="button" variant="ghost" size="sm" onClick={onClose} aria-label="Close" className="shrink-0 px-2">
             <X size={18} strokeWidth={1.75} />
           </Button>
         </div>

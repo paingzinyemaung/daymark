@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useCallback, useState, type FormEvent } from 'react'
 import { todayKey } from '../../lib/dates.ts'
 import type { Priority, Task, TaskDraft } from '../../types/task.ts'
 import { Button } from '../ui/Button.tsx'
@@ -56,10 +56,10 @@ function TaskFormBody({ task, onClose, onSubmit }: TaskFormBodyProps) {
   const [titleError, setTitleError] = useState('')
   const isEditing = Boolean(task)
 
-  function handleClose() {
+  const handleClose = useCallback(() => {
     setTitleError('')
     onClose()
-  }
+  }, [onClose])
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -145,7 +145,7 @@ function TaskFormBody({ task, onClose, onSubmit }: TaskFormBodyProps) {
           />
         </div>
         <div className="flex flex-col-reverse gap-2 pt-2 sm:flex-row sm:justify-end">
-          <Button variant="secondary" onClick={handleClose}>
+          <Button type="button" variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
           <Button type="submit">{isEditing ? 'Save changes' : 'Add task'}</Button>
