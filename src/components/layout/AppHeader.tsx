@@ -12,7 +12,7 @@ export function AppHeader({ view, onViewChange, onNewTask }: AppHeaderProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
           <div className="flex items-center gap-2.5">
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-[10px] bg-accent text-white">
               <Bookmark size={18} strokeWidth={1.75} aria-hidden="true" />
@@ -24,19 +24,10 @@ export function AppHeader({ view, onViewChange, onNewTask }: AppHeaderProps) {
               <p className="mt-0.5 text-xs tracking-wide text-muted uppercase">Your daily focus</p>
             </div>
           </div>
-          <Button
-            size="sm"
-            onClick={onNewTask}
-            className="sm:hidden"
-            aria-label="Add a new task"
-          >
-            <Plus size={16} aria-hidden="true" />
-            New
-          </Button>
         </div>
 
         <div className="flex items-center gap-2">
-          <nav aria-label="Primary" className="flex flex-1 rounded-[10px] border border-line bg-surface p-1">
+          <nav aria-label="Primary" className="flex flex-1 rounded-[10px] border border-line bg-surface p-1 sm:flex-initial">
             <NavTab active={view === 'today'} onClick={() => onViewChange('today')}>
               Today
             </NavTab>
@@ -44,7 +35,7 @@ export function AppHeader({ view, onViewChange, onNewTask }: AppHeaderProps) {
               All Tasks
             </NavTab>
           </nav>
-          <Button onClick={onNewTask} className="hidden sm:inline-flex">
+          <Button onClick={onNewTask}>
             <Plus size={16} aria-hidden="true" />
             New task
           </Button>
